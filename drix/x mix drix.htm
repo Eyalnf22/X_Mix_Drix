@@ -1,0 +1,206 @@
+﻿<html>
+<head>
+    <title> x & o</title>
+</head>
+
+<body dir="rtl">
+<audio id="clap">
+    <source src="ring.mp3" type="audio/mp3">
+</audio>
+
+<canvas onclick="showXY(event)" id="myCanvas" width ="400"  height="400" style="cursor:pointer; border:2px solid #d3d3d3;position:absolute; top:10; left:275; display="inline-block; "></canvas>
+
+<div style="border:1px solid black; position:absolute; top:10; right:200;">
+   <font color="green" face="david">תור:</font><img  id="turn"  width="20" height="20" style="margin-top:5;" />
+</div>
+
+
+
+<script>
+//משתנים
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+    var rows =3;
+    var clom = 3;
+    var drawing = setInterval(draw, 10);
+    var setOff =33;
+    var symbols = [];
+    var imageWidth = canvas.width/3 -20;
+    var imageHeight = canvas.width / 3 - 20;
+    var padding = 15;
+    var sorc = "img/gol1.png";
+    var turn = document.getElementById("turn");
+    var mouseX =0;
+    var mouseY = 0;
+    var stay = true;
+    var ox = canvas.width / 2;
+    var oy = canvas.height / 2;
+
+
+    for (var s = 0; s < rows; s++) {
+        symbols[s] = [];
+        for (b = 0; b < clom; b++) {
+            symbols[s][b] = { x: 0, y: 0, srcImage: sorc,status:0 }
+
+
+        }
+    }
+
+    //מראה את הקורדינטות של העכבר
+
+    function showXY(event) {
+        mouseX = event.clientX - parseInt(canvas.style.left);
+        mouseY = event.clientY - parseInt(canvas.style.top);
+
+
+    }
+
+    function changeTurn() {
+
+        if (sorc == "img/gol1.png") {
+            sorc = "img/xx1.png";
+        }
+        else {
+            sorc = "img/gol1.png";
+        }
+
+    }
+    
+ 
+
+    //צייר שחוזר על עצמו ותנאים
+    function draw() {
+        turn = document.getElementById("turn").src = sorc;
+        drawSymbols();
+        for (var w = 1; w <= 2; w++) {
+
+            if (symbols[0][0].status == w && symbols[1][0].status == w && symbols[2][0].status == w) {
+                winnerRect(symbols[0][0].x, symbols[2][0].y, symbols[0][0].x + imageHeight * 2 + padding, 10);
+            }
+            else if (symbols[0][1].status == w && symbols[1][1].status == w && symbols[2][1].status == w) {
+                winnerRect(symbols[0][1].x, symbols[2][1].y, symbols[0][0].x + imageHeight * 2 + padding, 10);
+
+            }
+            else if (symbols[0][2].status == w && symbols[1][2].status == w && symbols[2][2].status == w) {
+                winnerRect(symbols[0][2].x, symbols[2][2].y, symbols[0][0].x + imageHeight * 2 + padding, 10);
+
+            }
+
+            else if (symbols[0][0].status == w && symbols[0][1].status == w && symbols[0][2].status == w) {
+                winnerRect(symbols[0][2].x - 5, symbols[0][0].y, 10, symbols[0][0].y + imageHeight * 2 + padding);
+
+            }
+            else if (symbols[1][0].status == w && symbols[1][1].status == w && symbols[1][2].status == w) {
+                winnerRect(symbols[1][2].x - 5, symbols[1][0].y, 10, symbols[1][0].y + imageHeight * 2 + padding);
+
+            }
+
+            else if (symbols[2][0].status == w && symbols[2][1].status == w && symbols[2][2].status == w) {
+                winnerRect(symbols[2][2].x - 5, symbols[2][0].y, 10, symbols[2][0].y + imageHeight * 2 + padding);
+
+            }
+
+            else if (symbols[0][0].status == w && symbols[1][1].status == w && symbols[2][2].status == w) {
+                ctx.translate(ox, oy);
+                ctx.rotate((Math.PI / 180) * 15);
+                ctx.translate(-ox, -oy);
+                ctx.fillRect(symbols[0][0].x + imageHeight / 2, symbols[0][0].y + imageHeight / 2, symbols[0][0].x + imageHeight * 2 + padding, 10);
+                document.getElementById("clap").play();
+                clearInterval(drawing);
+
+
+            } 
+            else if (symbols[0][2].status == w && symbols[1][1].status == w && symbols[2][0].status == w) {
+                         ctx.translate(ox, oy);
+                ctx.rotate((Math.PI / 180) * 15);
+                ctx.translate(-ox, -oy);
+                ctx.fillRect(symbols[0][0].x + imageHeight / 2, symbols[0][0].y + imageHeight / 2, symbols[0][0].x + imageHeight * 2 + padding, 10);
+                document.getElementById("clap").play();
+                clearInterval(drawing);
+
+
+
+            }
+            
+        }
+    }
+   
+
+    function winnerRect(x, y, w, h) {
+        ctx.fillRect(x + imageHeight / 2, y + imageHeight / 2, w, h);
+        clearInterval(drawing);
+        document.getElementById("clap").play();
+
+    }
+    //מצייר את 4 קווים של הגבולות
+    drawLines();
+    function drawLines() {
+            ctx.fillStyle = "black";
+            ctx.fillRect(canvas.width / 3 - 5, 25, 10, canvas.height - 50);
+            ctx.fillRect(canvas.width / 3 * 2 - 5, 25, 10, canvas.height - 50);
+            ctx.fillRect(25, canvas.width / 3 * 2 - 5, canvas.height - 50, 10);
+            ctx.fillRect(25, canvas.width / 3 - 5, canvas.height - 50, 10);
+
+        }
+
+    
+
+    //מצייר סימנים או איקס או עיגול
+    function drawSymbols() {
+        for (var s = 0; s < rows; s++) {
+            for (b = 0; b < clom; b++) {
+                imageX =15+ s * (imageWidth + padding);
+                imageY = 15+ b * (imageHeight + padding);
+                symbols[s][b].x = imageX;
+                symbols[s][b].y = imageY;
+
+                
+
+
+
+        if (mouseX > imageX && mouseX < imageX + imageWidth && mouseY > imageY && mouseY < imageY + imageHeight && sorc == "img/xx1.png" && symbols[s][b].status == 0) {
+                    symbols[s][b].status = 1;
+                    var symbol = new Image;
+                    symbol.src = sorc;
+                    ctx.drawImage(symbol, imageX, imageY, imageWidth, imageHeight);
+                    // ctx.fillStyle="red"
+                    // ctx.fillRect(imageX, imageY, imageWidth, imageHeight);
+                    changeTurn();
+
+
+                }
+
+
+                if (mouseX > imageX && mouseX < imageX + imageWidth && mouseY > imageY && mouseY < imageY + imageHeight && sorc == "img/gol1.png" && symbols[s][b].status == 0) {
+                    
+                    symbols[s][b].status = 2;
+                    turn = document.getElementById("turn").src = sorc;
+                    var symbol = new Image;
+                    symbol.src = sorc;
+                    ctx.drawImage(symbol, imageX, imageY, imageWidth, imageHeight);
+                    changeTurn();
+
+                }
+
+            } 
+        } 
+    }
+
+    //עזרה
+    function myFunction() {
+        for (var s = 0; s < rows; s++) {
+            for (b = 0; b < clom; b++) {
+                //alert("[" + s + "]" + "[" + b + "]" + " x " + symbols[s][b].x + " " + " y " + symbols[s][b].y + " stat " + symbols[s][b].status);
+            }
+        }
+        //alert(stay)
+        //alert(sorc)
+        alert(symbols[0][0])
+
+    }
+
+    //פיניטו
+</script>
+
+</body>
+</html>

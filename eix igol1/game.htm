@@ -1,0 +1,821 @@
+﻿<html>
+<head>
+    <title>איקס עיגול</title>
+    <link href="gameStyleSheet.css" rel="stylesheet" type="text/css" />
+     <link rel="icon" type="image/png" href="pic1.png" />
+</head>
+<body dir="rtl">
+
+<audio id="clap">
+    <source src="CLAP.mp3" type="audio/mp3">
+</audio>
+
+<br /><br /><br />
+<div class="turn">תור <img id="turnpic" src="eix.png" width="15" height="15" style="margin-bottom:-3px;" /></div>
+
+<div class="bord">
+<hr id="line1" size="5" width="80%" color="black"  class="line" style="margin:30px 18px;"/>
+<hr id="line2" size="170" width="1.5%" color="black"  class="line" style="margin:15px 31.5px;"/>
+<hr id="line3" size="5" width="100%" color="black"  class="line" style="margin:97px 0px;  transform:rotate(135deg);"/>
+<hr id="line4" size="5" width="80%" color="black"  class="line" style="margin:97px 18px;"/>
+<hr id="line5" size="170" width="1.5%" color="black"  class="line" style="margin:15px 97px;"/>
+<hr id="line6" size="170" width="1.5%" color="black"  class="line" style="margin:15px 163px;"/>
+<hr id="line7" size="5" width="100%" color="black"  class="line" style="margin:97px 0px;  transform:rotate(-135deg);"/>
+<hr id="line8" size="5" width="80%" color="black"  class="line" style="margin:162.5px 18px;"/>
+
+<div onclick="stay1()" class="place" style="right:5px; top:5px;">
+<input  type="image" id="x1"  src="eix.png" width="35" height="35"  class="letter" />
+<input  type="image" id="o1"  src="gol.png" width="35" height="35"  class="letter" />
+</div>
+
+<div onclick="stay2()"  class="place" style="right:70px; top:5px;">
+<input  type="image" id="x2"  src="eix.png" width="35" height="35"  class="letter" />
+<input  type="image" id="o2"  src="gol.png" width="35" height="35"  class="letter" />
+</div>
+
+<div onclick="stay3()" class="place" style="right:135px; top:5px;">
+<input  type="image" id="x3"  src="eix.png" width="35" height="35"  class="letter" />
+<input  type="image" id="o3"  src="gol.png" width="35" height="35"  class="letter" />
+</div>
+
+<div  onclick="stay4()"class="place" style="right:5px; top:70px;">
+<input  type="image" id="x4"  src="eix.png" width="35" height="35"  class="letter" />
+<input  type="image" id="o4"  src="gol.png" width="35" height="35"  class="letter" />
+</div>
+
+<div onclick="stay5()"  class="place" style="right:70px; top:70px;">
+<input  type="image" id="x5"  src="eix.png" width="35" height="35"  class="letter" />
+<input  type="image" id="o5"  src="gol.png" width="35" height="35"  class="letter" />
+
+</div>
+
+<div  onclick="stay6()"class="place" style="right:135px; top:70px;">
+<input  type="image" id="x6"  src="eix.png" width="35" height="35"  class="letter" />
+<input  type="image" id="o6"  src="gol.png" width="35" height="35"  class="letter" />
+
+</div>
+
+
+<div onclick="stay7()"class="place" style="right:5px; top:135px;">
+<input  type="image" id="x7"  src="eix.png" width="35" height="35"  class="letter" />
+<input  type="image" id="o7"  src="gol.png" width="35" height="35"  class="letter" />
+
+</div>
+
+
+<div onclick="stay8()" class="place" style="right:70px; top:135px;">
+<input  type="image" id="x8"  src="eix.png" width="35" height="35"  class="letter" />
+<input  type="image" id="o8"  src="gol.png" width="35" height="35"  class="letter" />
+
+</div>
+
+
+<div onclick="stay9()"  class="place" style="right:135px; top:135px;">
+<input  type="image" id="x9"  src="eix.png"  width="35" height="35"  class="letter" />
+<input  type="image"  id="o9" src="gol.png" width="35" height="35"  class="letter" />
+</div>
+</div>
+<br />
+<div class="resetbord" onclick="resetbord()">איפוס</div>
+<br /><br /><br />
+
+<div id="won" class="winner">
+<img id="winnerpic" src="eixwon.png" width="35" height="35" hspace="10" style="float:right;"/><div class="heb">ניצח</div><br /><br />
+</div>
+<div id="kav1" class="kav" ></div>
+<div id="kav2" class="kav" style="bottom:43; background-color:#6C7A89;" ></div>
+<div id="kav3" class="kav" style="bottom:23;"></div>
+<div dir="ltr">
+<div id="kav4" class="kav" style="margin:20px 540px;"></div>
+<div id="kav5" class="kav" style="bottom:43; margin:20px 540; background-color:#6C7A89;" ></div>
+<div id="kav6" class="kav" style="bottom:23; margin:20px 540px;"></div></div> 
+<br />
+
+<script>
+
+
+
+    function longer() {
+        document.getElementById("kav1").style.width = "40px";
+        document.getElementById("kav1").style.opacity = "1";
+        document.getElementById("kav2").style.width = "40px";
+        document.getElementById("kav2").style.opacity = "1";
+        document.getElementById("kav3").style.width = "40px";
+        document.getElementById("kav3").style.opacity = "1";
+        document.getElementById("kav4").style.width = "40px";
+        document.getElementById("kav4").style.opacity = "1";
+        document.getElementById("kav5").style.width = "40px";
+        document.getElementById("kav5").style.opacity = "1";
+        document.getElementById("kav6").style.width = "40px";
+        document.getElementById("kav6").style.opacity = "1";
+        setTimeout(res, 500);
+    }
+    function res() {
+        document.getElementById("kav1").style.width = "0px";
+        document.getElementById("kav1").style.opacity = "0";
+        document.getElementById("kav2").style.width = "0px";
+        document.getElementById("kav2").style.opacity = "0";
+        document.getElementById("kav3").style.width = "0px";
+        document.getElementById("kav3").style.opacity = "0";
+        document.getElementById("kav4").style.width = "0px";
+        document.getElementById("kav4").style.opacity = "0";
+        document.getElementById("kav5").style.width = "0px";
+        document.getElementById("kav5").style.opacity = "0";
+        document.getElementById("kav6").style.width = "0px";
+        document.getElementById("kav6").style.opacity = "0";
+    }
+
+
+
+
+    function orange() {
+        won.style.backgroundColor = "#EB9532";
+        won.style.borderColor = "#F9690E";
+        setTimeout(purple, 600);
+    }
+
+    function purple() {
+        won.style.backgroundColor = "#947CB0";
+        won.style.borderColor = "#674172";
+        setTimeout(yellow, 600);
+    }
+
+
+    function yellow() {
+        won.style.backgroundColor = "#F4D03F";
+        won.style.borderColor = " #d2ac14";
+        setTimeout(blue, 600);
+    }
+
+    function blue() {
+        won.style.backgroundColor = "#1E8BC3";
+        won.style.borderColor = "blue";
+        setTimeout(pink, 600);
+    }
+
+    function pink() {
+        won.style.backgroundColor = "#F1A9A0";
+        won.style.borderColor = "#DB0A5B";
+        setTimeout(green, 600);
+    }
+
+    function green() {
+        won.style.backgroundColor = "#87D37C";
+        won.style.borderColor = "green";
+        setTimeout(orange, 600);
+    }
+    
+
+
+    
+
+
+
+
+    function stay9() {
+
+        document.getElementById("x9").disabled = true;
+        document.getElementById("o9").disabled = true;
+
+        var x = document.getElementById("turnpic");
+        if (x.src.match("eix.png")) {
+            x.src = "gol.png";
+            document.getElementById("x9").style.display = "block";
+        } else {
+            x.src = "eix.png";
+            document.getElementById("o9").style.display = "block";
+
+        }
+
+        x9 = document.getElementById("x9");
+        x8 = document.getElementById("x8");
+        x7 = document.getElementById("x7");
+        x5 = document.getElementById("x5");
+        x4 = document.getElementById("x4");
+        x3 = document.getElementById("x3");
+        x2 = document.getElementById("x2");
+        x1 = document.getElementById("x1");
+
+        o9 = document.getElementById("o9");
+        o8 = document.getElementById("o8");
+        o7 = document.getElementById("o7");
+        o5 = document.getElementById("o5");
+        o4 = document.getElementById("o4");
+        o3 = document.getElementById("o3");
+        o2 = document.getElementById("o2");
+        o1 = document.getElementById("o1");
+
+        w = document.getElementById("winnerpic");
+
+
+        if (x1.style.display == "block" && x5.style.display == "block" && x9.style.display == "block") {
+            document.getElementById("clap").play();
+            document.getElementById("line3").style.display = "block";
+            w.src = "eixwon.png";
+            document.getElementById("won").style.display = "block";
+            setTimeout(orange, 600);
+            setInterval(longer, 1000);
+
+
+        }
+
+        if (x3.style.display == "block" && x6.style.display == "block" && x9.style.display == "block") {
+             document.getElementById("clap").play();
+            document.getElementById("line6").style.display = "block";
+            document.getElementById("won").style.display = "block";
+            w.src = "eixwon.png";
+            setTimeout(orange, 600);
+            setInterval(longer, 1000);
+            
+
+        }
+
+        if (x7.style.display == "block" && x8.style.display == "block" && x9.style.display == "block") {
+            document.getElementById("clap").play();
+            document.getElementById("line8").style.display = "block";
+            document.getElementById("won").style.display = "block";
+            w.src = "eixwon.png";
+            setTimeout(orange, 600);
+            setInterval(longer, 1000);
+        }
+
+        if (o1.style.display == "block" && o5.style.display == "block" && o9.style.display == "block") {
+            document.getElementById("clap").play();
+            document.getElementById("line3").style.display = "block";
+            document.getElementById("won").style.display = "block";
+            document.getElementById("winnerpic").src = "gol.png";
+            setTimeout(orange, 600);
+            setInterval(longer, 1000);
+        }
+
+        if (o3.style.display == "block" && o6.style.display == "block" && o9.style.display == "block") {
+            document.getElementById("clap").play();
+            document.getElementById("line6").style.display = "block";
+            document.getElementById("won").style.display = "block";
+            document.getElementById("winnerpic").src = "gol.png";
+            setTimeout(orange, 600);
+            setInterval(longer, 1000);
+        }
+
+        if (o7.style.display == "block" && o8.style.display == "block" && o9.style.display == "block") {
+            document.getElementById("clap").play();
+            document.getElementById("line8").style.display = "block";
+            document.getElementById("won").style.display = "block";
+            document.getElementById("winnerpic").src = "gol.png";
+            setTimeout(orange, 600);
+            setInterval(longer, 1000);
+        }
+
+
+        
+    }
+        
+
+
+    function stay8() {
+
+        document.getElementById("x8").disabled = true;
+        document.getElementById("o8").disabled = true;
+
+        var x = document.getElementById("turnpic");
+        if (x.src.match("eix.png")) {
+            x.src = "gol.png"; 
+            document.getElementById("x8").style.display = "block";
+        } else {
+            x.src = "eix.png"; 
+            document.getElementById("o8").style.display = "block";
+        }
+
+
+
+        if (x2.style.display == "block" && x5.style.display == "block" && x8.style.display == "block") {
+            document.getElementById("clap").play();
+            document.getElementById("line5").style.display = "block";
+            document.getElementById("won").style.display = "block";
+            w.src = "eixwon.png";
+            setTimeout(orange, 600);
+            setInterval(longer, 1000);
+        }
+
+        if (x7.style.display == "block" && x8.style.display == "block" && x9.style.display == "block") {
+            document.getElementById("clap").play();
+            document.getElementById("line8").style.display = "block";
+            document.getElementById("won").style.display = "block";
+            w.src = "eixwon.png";
+            setTimeout(orange, 600);
+            setInterval(longer, 1000);
+        }
+
+        if (o2.style.display == "block" && o5.style.display == "block" && o8.style.display == "block") {
+            document.getElementById("clap").play();
+            document.getElementById("line5").style.display = "block";
+            document.getElementById("won").style.display = "block";
+            document.getElementById("winnerpic").src = "gol.png";
+            setTimeout(orange, 600);
+            setInterval(longer, 1000);
+        }
+
+        if (o7.style.display == "block" && o8.style.display == "block" && o9.style.display == "block") {
+            document.getElementById("clap").play();
+            document.getElementById("line8").style.display = "block";
+            document.getElementById("won").style.display = "block";
+            document.getElementById("winnerpic").src = "gol.png";
+            setTimeout(orange, 600);
+            setInterval(longer, 1000);
+        }
+
+
+    }
+
+
+    function stay7() {
+
+        document.getElementById("x7").disabled = true;
+        document.getElementById("o7").disabled = true;
+
+        var x = document.getElementById("turnpic");
+        if (x.src.match("eix.png")) {
+            x.src = "gol.png";
+            document.getElementById("x7").style.display = "block";
+        } else {
+            x.src = "eix.png";
+            document.getElementById("o7").style.display = "block";
+        }
+
+
+        if (x1.style.display == "block" && x4.style.display == "block" && x7.style.display == "block") {
+            document.getElementById("clap").play();
+            document.getElementById("line2").style.display = "block";
+            setTimeout(orange, 600);
+            document.getElementById("won").style.display = "block";
+            setInterval(longer, 1000);
+        }
+
+        if (x3.style.display == "block" && x5.style.display == "block" && x7.style.display == "block") {
+              document.getElementById("clap").play();
+            document.getElementById("line7").style.display = "block";
+            setTimeout(orange, 600);
+            document.getElementById("won").style.display = "block";
+            setInterval(longer, 1000);
+           
+
+        }
+
+        if (x7.style.display == "block" && x8.style.display == "block" && x9.style.display == "block") {
+            document.getElementById("clap").play();
+            document.getElementById("line8").style.display = "block"; 
+            setTimeout(orange, 600);
+            document.getElementById("won").style.display = "block";
+            setInterval(longer, 1000);
+           
+
+
+        }
+
+        if (o1.style.display == "block" && o4.style.display == "block" && o7.style.display == "block") {
+            document.getElementById("clap").play();
+            document.getElementById("line2").style.display = "block";
+            setTimeout(orange, 600);
+            document.getElementById("won").style.display = "block";
+            document.getElementById("winnerpic").src = "gol.png";
+            setInterval(longer, 1000);
+            
+        }
+
+        if (o3.style.display == "block" && o5.style.display == "block" && o7.style.display == "block") {
+            document.getElementById("clap").play();
+            document.getElementById("line7").style.display = "block"; 
+             setTimeout(orange, 600);
+             document.getElementById("won").style.display = "block";
+             document.getElementById("winnerpic").src = "gol.png";
+            setInterval(longer, 1000);
+        }
+
+        if (o7.style.display == "block" && o8.style.display == "block" && o9.style.display == "block") {
+            document.getElementById("clap").play();
+            document.getElementById("line8").style.display = "block";
+            setTimeout(orange, 600);
+              document.getElementById("won").style.display = "block";
+              document.getElementById("winnerpic").src = "gol.png";
+            setInterval(longer, 1000);
+        }
+
+
+    }
+
+
+
+    function stay6() {
+
+        document.getElementById("x6").disabled = true;
+        document.getElementById("o6").disabled = true;
+
+        var x = document.getElementById("turnpic");
+        if (x.src.match("eix.png")) {
+            x.src = "gol.png";
+            document.getElementById("x6").style.display = "block";
+        } else {
+            x.src = "eix.png";
+            document.getElementById("o6").style.display = "block";
+        }
+        if (x3.style.display == "block" && x6.style.display == "block" && x9.style.display == "block") {
+            document.getElementById("clap").play();
+            document.getElementById("line6").style.display = "block";
+              setTimeout(orange, 600)
+              document.getElementById("won").style.display = "block";
+              setInterval(longer, 1000);
+        }
+
+          if (x4.style.display == "block" && x5.style.display == "block" && x6.style.display == "block") {
+              document.getElementById("clap").play();
+            document.getElementById("line4").style.display = "block";
+            setTimeout(orange, 600)
+            document.getElementById("won").style.display = "block";
+            setInterval(longer, 1000);
+        }
+
+
+        if (o3.style.display == "block" && o6.style.display == "block" && o9.style.display == "block") {
+            document.getElementById("clap").play();
+            document.getElementById("line6").style.display = "block";
+            setTimeout(orange, 600)
+            document.getElementById("won").style.display = "block";
+            document.getElementById("winnerpic").src = "gol.png";
+            setInterval(longer, 1000);
+            
+        }
+
+        if (o4.style.display == "block" && o5.style.display == "block" && o6.style.display == "block") {
+            document.getElementById("clap").play();
+            document.getElementById("line4").style.display = "block"; 
+            setTimeout(orange, 600)
+            document.getElementById("won").style.display = "block";
+            document.getElementById("winnerpic").src = "gol.png";
+            setInterval(longer, 1000);
+          
+        }
+
+
+    }
+
+
+    function stay5() {
+
+        document.getElementById("x5").disabled = true;
+        document.getElementById("o5").disabled = true;
+
+        var x = document.getElementById("turnpic");
+        if (x.src.match("eix.png")) {
+            x.src = "gol.png";
+            document.getElementById("x5").style.display = "block";
+        }
+        else {
+            x.src = "eix.png";
+            document.getElementById("o5").style.display = "block";
+        }
+
+
+
+        if (x1.style.display == "block" && x5.style.display == "block" && x9.style.display == "block") {
+            document.getElementById("line3").style.display = "block";
+            document.getElementById("clap").play();
+            setTimeout(orange, 600);
+            document.getElementById("won").style.display = "block";
+            setInterval(longer, 1000);
+            
+        }
+
+        if (x2.style.display == "block" && x5.style.display == "block" && x8.style.display == "block") {
+            document.getElementById("clap").play();
+            document.getElementById("line5").style.display = "block";
+             setTimeout(orange, 600);
+             document.getElementById("won").style.display = "block";
+             setInterval(longer, 1000);
+           
+        }
+
+         if (x4.style.display == "block" && x5.style.display == "block" && x6.style.display == "block") {
+             document.getElementById("clap").play();
+            document.getElementById("line4").style.display = "block"; 
+            setTimeout(orange, 600);
+            document.getElementById("won").style.display = "block";
+            setInterval(longer, 1000);
+           
+        }
+
+        if (x3.style.display == "block" && x5.style.display == "block" && x7.style.display == "block") {
+            document.getElementById("clap").play();
+            document.getElementById("line7").style.display = "block"; 
+            setTimeout(orange, 600);
+            document.getElementById("won").style.display = "block";
+            setInterval(longer, 1000);
+           
+        }
+
+        if (o1.style.display == "block" && o5.style.display == "block" && o9.style.display == "block") {
+            document.getElementById("clap").play();
+            document.getElementById("line3").style.display = "block";
+            setTimeout(orange, 600);
+            document.getElementById("won").style.display = "block";
+            document.getElementById("winnerpic").src = "gol.png";
+            setInterval(longer, 1000);
+        }
+
+        if (o2.style.display == "block" && o5.style.display == "block" && o8.style.display == "block") {
+            document.getElementById("clap").play();
+            document.getElementById("line5").style.display = "block";
+             setTimeout(orange, 600);
+             document.getElementById("won").style.display = "block";
+             document.getElementById("winnerpic").src = "gol.png";
+            setInterval(longer, 1000);
+        }
+
+        if (o4.style.display == "block" && o5.style.display == "block" && o6.style.display == "block") {
+            document.getElementById("clap").play();
+            document.getElementById("line4").style.display = "block"; 
+            
+            document.getElementById("won").style.display = "block";
+            document.getElementById("winnerpic").src = "gol.png";
+            setTimeout(orange, 600);
+            setInterval(longer, 1000);
+        }
+
+        if (o3.style.display == "block" && o5.style.display == "block" && o7.style.display == "block") {
+            document.getElementById("clap").play();
+            document.getElementById("line7").style.display = "block";
+              setTimeout(orange, 600);
+              document.getElementById("won").style.display = "block";
+              document.getElementById("winnerpic").src = "gol.png";
+            setInterval(longer, 1000);
+        }
+    }
+
+
+
+    function stay4() {
+
+        document.getElementById("x4").disabled = true;
+        document.getElementById("o4").disabled = true;
+
+        var x = document.getElementById("turnpic");
+        if (x.src.match("eix.png")) {
+            x.src = "gol.png";
+            document.getElementById("x4").style.display = "block";
+
+        } else {
+            x.src = "eix.png";
+            document.getElementById("o4").style.display = "block";
+        }
+
+
+
+        if (x1.style.display == "block" && x4.style.display == "block" && x7.style.display == "block") {
+            document.getElementById("clap").play();
+            document.getElementById("line2").style.display = "block";
+            setTimeout(orange, 600)
+            document.getElementById("won").style.display = "block";
+            setInterval(longer, 1000);
+            
+        }
+
+        if (x4.style.display == "block" && x5.style.display == "block" && x6.style.display == "block") {
+            document.getElementById("clap").play();
+            document.getElementById("line4").style.display = "block";
+              setTimeout(orange, 600)
+              document.getElementById("won").style.display = "block";
+              setInterval(longer, 1000);
+          
+        }
+
+          if (o1.style.display == "block" && o4.style.display == "block" && o7.style.display == "block") {
+              document.getElementById("clap").play();
+            document.getElementById("line2").style.display = "block"; 
+            setTimeout(orange, 600)
+            document.getElementById("won").style.display = "block";
+            setInterval(longer, 1000);
+            document.getElementById("winnerpic").src = "gol.png";
+        }
+
+        if (o4.style.display == "block" && o5.style.display == "block" && o6.style.display == "block") {
+            document.getElementById("clap").play();
+            document.getElementById("line4").style.display = "block"; 
+            setTimeout(orange, 600)
+            document.getElementById("won").style.display = "block";
+            setInterval(longer, 1000);
+            document.getElementById("winnerpic").src = "gol.png";
+        }
+    }
+
+
+
+    function stay3() {
+
+        document.getElementById("x3").disabled = true;
+        document.getElementById("o3").disabled = true;
+
+        var x = document.getElementById("turnpic");
+        if (x.src.match("eix.png")) {
+            x.src = "gol.png";
+            document.getElementById("x3").style.display = "block";
+        } else {
+            x.src = "eix.png";
+            document.getElementById("o3").style.display = "block";
+        }
+
+
+        if (x1.style.display == "block" && x2.style.display == "block" && x3.style.display == "block") {
+            document.getElementById("clap").play();
+            document.getElementById("line1").style.display = "block";
+            setTimeout(orange, 600);
+            document.getElementById("won").style.display = "block";
+            setInterval(longer, 1000);
+           
+            
+        }
+
+        if (x3.style.display == "block" && x6.style.display == "block" && x9.style.display == "block") {
+            document.getElementById("clap").play();
+            document.getElementById("line6").style.display = "block"; 
+             setTimeout(orange, 600);
+             document.getElementById("won").style.display = "block";
+             setInterval(longer, 1000);
+          
+        }
+
+         if (x3.style.display == "block" && x5.style.display == "block" && x7.style.display == "block") {
+             document.getElementById("clap").play();
+            document.getElementById("line7").style.display = "block";
+             setTimeout(orange, 600);
+             document.getElementById("won").style.display = "block";
+             setInterval(longer, 1000);
+           
+        }
+
+         if (o1.style.display == "block" && o2.style.display == "block" && o3.style.display == "block") {
+             document.getElementById("clap").play();
+            document.getElementById("line1").style.display = "block"; 
+             setTimeout(orange, 600);
+             document.getElementById("won").style.display = "block";
+             setInterval(longer, 1000);
+             document.getElementById("winnerpic").src = "gol.png";
+        }
+
+         if (o3.style.display == "block" && o6.style.display == "block" && o9.style.display == "block") {
+             document.getElementById("clap").play();
+            document.getElementById("line6").style.display = "block"; 
+             setTimeout(orange, 600);
+             document.getElementById("won").style.display = "block";
+             setInterval(longer, 1000);
+             document.getElementById("winnerpic").src = "gol.png";
+        }
+
+         if (o3.style.display == "block" && o5.style.display == "block" && o7.style.display == "block") {
+             document.getElementById("clap").play();
+            document.getElementById("line7").style.display = "block";
+            setTimeout(orange, 600);
+            document.getElementById("won").style.display = "block";
+            setInterval(longer, 1000);
+            document.getElementById("winnerpic").src = "gol.png";
+            
+        }
+    }
+
+
+    function stay2() {
+
+        document.getElementById("x2").disabled = true;
+        document.getElementById("o2").disabled = true;
+
+        var x = document.getElementById("turnpic");
+        if (x.src.match("eix.png")) {
+            x.src = "gol.png";
+            document.getElementById("x2").style.display = "block";
+        } else {
+            x.src = "eix.png";
+            document.getElementById("o2").style.display = "block";
+        }
+
+
+        if (x1.style.display == "block" && x2.style.display == "block" && x3.style.display == "block") {
+            document.getElementById("clap").play();
+            document.getElementById("line1").style.display = "block";  
+            setTimeout(orange, 600)
+            document.getElementById("won").style.display = "block";
+            setInterval(longer, 1000);
+          
+        }
+
+        if (x2.style.display == "block" && x5.style.display == "block" && x8.style.display == "block") {
+            document.getElementById("clap").play();
+            document.getElementById("won").style.display = "block";
+            document.getElementById("line5").style.display = "block"; 
+             setTimeout(orange, 600)
+             setInterval(longer, 1000);
+          
+        }
+
+         if (o1.style.display == "block" && o2.style.display == "block" && o3.style.display == "block") {
+             document.getElementById("clap").play();
+            document.getElementById("line1").style.display = "block";
+            document.getElementById("won").style.display = "block";
+            setTimeout(orange, 600);
+            document.getElementById("winnerpic").src = "gol.png";
+            setInterval(longer, 1000);
+        }
+
+        if (o2.style.display == "block" && o5.style.display == "block" && o8.style.display == "block") {
+            document.getElementById("clap").play();
+            document.getElementById("line5").style.display = "block";
+            document.getElementById("won").style.display = "block";
+            setTimeout(orange, 600);
+            document.getElementById("winnerpic").src = "gol.png";
+            setInterval(longer, 1000);
+           
+        }
+    }
+
+
+    function stay1() {
+
+        document.getElementById("x1").disabled = true;
+        document.getElementById("o1").disabled = true;
+
+        var x = document.getElementById("turnpic");
+        if (x.src.match("eix.png")) {
+            x.src = "gol.png";
+            document.getElementById("x1").style.display = "block";
+        } else {
+            x.src = "eix.png";
+            document.getElementById("o1").style.display = "block";
+        }
+
+
+        if (x1.style.display == "block" && x2.style.display == "block" && x3.style.display == "block") {
+            document.getElementById("clap").play();
+        document.getElementById("won").style.display = "block";
+         document.getElementById("line1").style.display = "block"; 
+            setTimeout(orange, 600)
+            setInterval(longer, 1000);
+        }
+
+        if (x1.style.display == "block" && x4.style.display == "block" && x7.style.display == "block") {
+            document.getElementById("clap").play();
+            document.getElementById("line2").style.display = "block";
+             document.getElementById("won").style.display = "block";
+            setTimeout(orange, 600)
+            setInterval(longer, 1000);
+            
+        }
+
+        if (x1.style.display == "block" && x5.style.display == "block" && x9.style.display == "block") {
+            document.getElementById("clap").play();
+            document.getElementById("line3").style.display = "block";
+            document.getElementById("won").style.display = "block";
+            setTimeout(orange, 600)
+            setInterval(longer, 1000);
+        }
+
+        if (o1.style.display == "block" && o2.style.display == "block" && o3.style.display == "block") {
+            document.getElementById("clap").play();
+            document.getElementById("line1").style.display = "block";
+            document.getElementById("won").style.display = "block";
+            setTimeout(orange, 600);
+            document.getElementById("winnerpic").src = "gol.png";
+            setInterval(longer, 1000);
+        }
+
+        if (o1.style.display == "block" && o4.style.display == "block" && o7.style.display == "block") {
+            document.getElementById("clap").play();
+            document.getElementById("line2").style.display = "block";
+            document.getElementById("won").style.display = "block";
+            setTimeout(orange, 600);
+            setInterval(longer, 1000);
+            document.getElementById("winnerpic").src = "gol.png";
+           
+          
+        }
+
+        if (o1.style.display == "block" && o5.style.display == "block" && o9.style.display == "block") {
+            document.getElementById("clap").play();
+            document.getElementById("line3").style.display = "block";
+            document.getElementById("won").style.display = "block";
+            setTimeout(orange, 600);
+            w.src = "gol.png";
+            setInterval(longer, 1000);
+        }
+
+    }
+
+    function resetbord() {
+        document.getElementById("turnpic").src= "eix.png";
+        location.reload();
+    }
+
+
+</script>
+
+
+
+
+</body>
+</html>

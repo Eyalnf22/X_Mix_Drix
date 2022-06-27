@@ -1,0 +1,99 @@
+﻿.turn
+{
+    margin-right:392px; 
+    border:0.5px solid black;
+    display:inline-block;
+    padding:5px;
+    font-family:Guttman Hatzvi;
+
+}
+
+.bord 
+{
+    background:#19B5FE;
+    width:200px;
+    height:200px;
+    position:absolute;
+    right:400px;
+}
+
+.place
+{
+    
+    background:white;
+    width:60px;
+    height:60px;
+    position:absolute;
+    border:none;
+      cursor:pointer;
+}
+
+.letter
+{
+     display:none;
+      margin:12.5; 
+      position:absolute;
+}
+
+.resetbord
+{
+    margin-right:392px; 
+    border:0.5px solid black;
+    display:inline-block;
+    padding:5px;
+    font-family:Guttman Hatzvi;
+    margin-top:21%;
+    cursor:pointer;
+}
+
+.line
+{
+    z-index:1;
+    position:absolute;
+    border-radius:15px;
+    display:none;
+}
+
+.winner
+{
+    margin:auto 420px;
+    border:3px solid green;
+    border-radius:15px;
+    display:none;
+    padding:10px;
+    font-family:guttman yad-brush;
+    background-color:#87D37C;
+    width:100px;
+    
+}
+
+.heb 
+{
+    background-color:White;
+    padding:5px;
+    border-radius:15px;
+    display:inline;
+    margin-top:20px;
+}
+
+.kav
+{
+    transition:width 1s;
+    width:0px;
+    background-color:black;
+    display:inline;
+    position:absolute;
+    margin:20px 560px;
+    bottom:63;
+    height:5px;
+    border-radius:20px;
+
+}
+
+.win /*תמונה של הזוכה*/
+{
+    float:right;
+     display:inline;
+}
+
+
