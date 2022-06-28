@@ -1,0 +1,11 @@
+D:\All Projects\FormX\FormX\bin\Debug\FormX.exe.config
+D:\All Projects\FormX\FormX\bin\Debug\FormX.exe
+D:\All Projects\FormX\FormX\bin\Debug\FormX.pdb
+D:\All Projects\FormX\FormX\obj\Debug\FormX.csproj.AssemblyReference.cache
+D:\All Projects\FormX\FormX\obj\Debug\FormX.csproj.SuggestedBindingRedirects.cache
+D:\All Projects\FormX\FormX\obj\Debug\FormX.Form1.resources
+D:\All Projects\FormX\FormX\obj\Debug\FormX.Properties.Resources.resources
+D:\All Projects\FormX\FormX\obj\Debug\FormX.csproj.GenerateResource.cache
+D:\All Projects\FormX\FormX\obj\Debug\FormX.csproj.CoreCompileInputs.cache
+D:\All Projects\FormX\FormX\obj\Debug\FormX.exe
+D:\All Projects\FormX\FormX\obj\Debug\FormX.pdb
